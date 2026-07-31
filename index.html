@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfumería Premium</title>
+    <link rel="preload" as="image" href="img/video1.gif">
+    <link rel="preload" as="image" href="img/video2.gif">
+    <link rel="preload" as="image" href="img/video3.gif">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="barra-acento" aria-hidden="true"></div>
+
+    <header class="header-superior" id="navbar">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo GB Exclusive Fragrances" draggable="false">
+        </div>
+        <nav class="menu-navegacion">
+            <ul>
+                <li><a href="#inicio" class="enlace-menu activo">Inicio</a></li>
+                <li><a href="#logros" class="enlace-menu">Logros</a></li>
+                <li><a href="#personal" class="enlace-menu">Personal</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="inicio">
+        <section class="carrusel-contenedor" aria-roledescription="carrusel" aria-label="Destacados">
+
+            <div class="slide activo" aria-hidden="false">
+                <div class="video-background">
+                    <img src="img/video1.gif" alt="" class="gif-fondo" draggable="false">
+                </div>
+                <div class="capa-oscura"></div>
+                <div class="contenido-slide">
+                    <span class="subtitulo-banner">Edición Limitada</span>
+                    <h2 class="titulo-banner">Una fragancia<br>para cada historia</h2>
+                    <p class="descripcion-banner">Tu esencia inspira. Descubre una experiencia sensorial única con nuestra nueva línea de perfumes versátiles diseñados para deslumbrar.</p>
+                </div>
+            </div>
+
+            <div class="slide" aria-hidden="true">
+                <div class="video-background">
+                    <img src="img/video2.gif" alt="" class="gif-fondo" draggable="false">
+                </div>
+                <div class="capa-oscura"></div>
+                <div class="contenido-slide">
+                    <span class="subtitulo-banner">Nuestra Historia</span>
+                    <h2 class="titulo-banner">Grandes Logros<br>Compartidos</h2>
+                    <p class="descripcion-banner">Reconocemos la pasión, la dedicación y el crecimiento de una comunidad independiente que redefine los estándares globales de la alta perfumería.</p>
+                </div>
+            </div>
+
+            <div class="slide" aria-hidden="true">
+                <div class="video-background">
+                    <img src="img/video3.gif" alt="" class="gif-fondo" draggable="false">
+                </div>
+                <div class="capa-oscura"></div>
+                <div class="contenido-slide">
+                    <span class="subtitulo-banner">Sello Único</span>
+                    <h2 class="titulo-banner">Tu Toque y Estilo<br>Personal</h2>
+                    <p class="descripcion-banner">Un espacio exclusivo diseñado para conectar con lo que te hace auténtico. Alta perfumería que marca la diferencia a donde vayas.</p>
+                </div>
+            </div>
+
+            <button type="button" class="control-carrusel control-anterior" aria-label="Slide anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button type="button" class="control-carrusel control-siguiente" aria-label="Slide siguiente">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <div class="indicadores-carrusel" role="tablist" aria-label="Seleccionar slide">
+                <button type="button" class="indicador activo" role="tab" aria-selected="true" aria-label="Ir al slide 1"><span class="barra-progreso"></span></button>
+                <button type="button" class="indicador" role="tab" aria-selected="false" aria-label="Ir al slide 2"><span class="barra-progreso"></span></button>
+                <button type="button" class="indicador" role="tab" aria-selected="false" aria-label="Ir al slide 3"><span class="barra-progreso"></span></button>
+            </div>
+
+        </section>
+    </main>
+
+    <section class="seccion-catalogo" id="logros">
+        <div class="catalogo-visual">
+            <img src="img/catalogo.jpg" alt="Maqueta Catálogo Digital de Perfumes">
+        </div>
+        <div class="catalogo-contenido">
+            <span class="catalogo-tag">Inspiración de temporada</span>
+            <h2 class="catalogo-titulo">MIRA NUESTRO<br><span>Catálogo Digital</span></h2>
+            <p class="catalogo-descripcion">Explora nuestra colección curada de perfumes de autor: fragancias frescas, orientales y florales, junto a los últimos lanzamientos en alta perfumería internacional.</p>
+            <a href="#" class="btn-premium">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <section class="seccion-videos" id="personal">
+        <h2 class="seccion-titulo-centrado">Últimos Perfumes</h2>
+        <div class="grid-videos">
+
+            <div class="tarjeta-video">
+                <div class="contenedor-miniatura">
+                    <img src="img/perfume1.jpg" alt="Essence Noir">
+                    <div class="etiqueta-perfume">Nuevo</div>
+                </div>
+                <h3 class="video-titulo">Essence Noir</h3>
+                <p class="perfume-descripcion">Notas amaderadas y especiadas para una presencia intensa y seductora.</p>
+            </div>
+
+            <div class="tarjeta-video">
+                <div class="contenedor-miniatura">
+                    <img src="img/perfume2.jpg" alt="Fleur Divine">
+                    <div class="etiqueta-perfume">Best Seller</div>
+                </div>
+                <h3 class="video-titulo">Fleur Divine</h3>
+                <p class="perfume-descripcion">Un bouquet floral elegante con toques de jazmín y vainilla suave.</p>
+            </div>
+
+            <div class="tarjeta-video">
+                <div class="contenedor-miniatura">
+                    <img src="img/perfume3.jpg" alt="Aqua Fresh">
+                    <div class="etiqueta-perfume">Edición Limitada</div>
+                </div>
+                <h3 class="video-titulo">Aqua Fresh</h3>
+                <p class="perfume-descripcion">Una fragancia acuática y cítrica, ideal para el día a día.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="seccion-valores">
+        <h2 class="valores-lema">Belleza que inspira, poder que transforma</h2>
+        <div class="grid-valores">
+            <div class="item-valor">
+                <div class="valor-icono"><i class="fa-solid fa-flask-vial"></i></div>
+                <span class="valor-texto">Fórmula Segura</span>
+            </div>
+            <div class="item-valor">
+                <div class="valor-icono"><i class="fa-solid fa-paw"></i></div>
+                <span class="valor-texto">No Testeado en Animales</span>
+            </div>
+            <div class="item-valor">
+                <div class="valor-icono"><i class="fa-solid fa-handshake-angle"></i></div>
+                <span class="valor-texto">Dermatológicamente Testeado</span>
+            </div>
+            <div class="item-valor">
+                <div class="valor-icono"><i class="fa-solid fa-shield-halved"></i></div>
+                <span class="valor-texto">Metales 100% Regulados</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-principal">
+        <div class="footer-columnas">
+            <div class="columna-footer">
+                <h4>Conócenos</h4>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Innovación</a></li>
+                    <li><a href="#">Sostenibilidad</a></li>
+                </ul>
+            </div>
+            <div class="columna-footer">
+                <h4>Oportunidad</h4>
+                <ul>
+                    <li><a href="#">Ingresa a MAYA aquí</a></li>
+                    <li><a href="#">Trabaja con Nosotros</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="barra-inferior">
+            <span class="copyright">&copy; 2026 Todos los derechos reservados.</span>
+            <div class="enlaces-legales">
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Protección de Datos</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

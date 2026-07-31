@@ -1,0 +1,495 @@
+/* --- CONFIGURACIÓN GENERAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    color: #111111;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #d45d34;
+    outline-offset: 3px;
+}
+
+/* --- BARRA DE ACENTO SUPERIOR --- */
+.barra-acento {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-color: #d45d34;
+    z-index: 101;
+}
+
+/* --- BARRA DE NAVEGACIÓN --- */
+.header-superior {
+    position: fixed;
+    top: 6px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 60px 12px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+}
+
+.header-superior.scroll {
+    padding: 8px 60px;
+    gap: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+.menu-navegacion ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.enlace-menu {
+    text-decoration: none;
+    color: #222222;
+    font-weight: 400;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.enlace-menu:hover, .enlace-menu.activo {
+    color: #d45d34;
+}
+
+.enlace-menu::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #d45d34;
+    transition: width 0.3s ease;
+}
+
+.enlace-menu:hover::after, .enlace-menu.activo::after {
+    width: 100%;
+}
+
+/* --- CARRUSEL DINÁMICO MEJORADO --- */
+.carrusel-contenedor {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
+    background-color: #000000;
+    margin-top: var(--espacio-header, 160px);
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    /* No usamos "visibility" ni "display" aquí: si un slide se oculta con
+       visibility:hidden, muchos navegadores detienen y REINICIAN el gif
+       la próxima vez que se muestra. Con opacity + pointer-events el gif
+       de fondo sigue decodiéndose siempre, así que el carrusel nunca
+       "salta" al frame inicial cuando vuelve a aparecer. */
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.slide.activo {
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.video-background .gif-fondo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.capa-oscura {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0.85) 30%, rgba(255,255,255,0.3) 60%, rgba(0,0,0,0) 100%);
+    z-index: 2;
+}
+
+.contenido-slide {
+    position: relative;
+    z-index: 3;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.slide.activo .contenido-slide {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.subtitulo-banner {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #d45d34;
+    font-weight: 500;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.titulo-banner {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: #111111;
+    margin-bottom: 25px;
+}
+
+.descripcion-banner {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444444;
+}
+
+/* --- Controles de flecha del carrusel --- */
+.control-carrusel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(17, 17, 17, 0.25);
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.control-carrusel:hover {
+    background: #d45d34;
+    border-color: #d45d34;
+}
+
+.control-anterior { left: 4%; }
+.control-siguiente { right: 4%; }
+
+/* --- Indicadores / progreso del carrusel --- */
+.indicadores-carrusel {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    gap: 12px;
+}
+
+.indicador {
+    width: 40px;
+    height: 4px;
+    border: none;
+    padding: 0;
+    background: rgba(17, 17, 17, 0.2);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.barra-progreso {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #d45d34;
+}
+
+.indicador.activo .barra-progreso {
+    animation: avanzarProgreso 4s linear forwards;
+}
+
+@keyframes avanzarProgreso {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .slide, .contenido-slide { transition: none; }
+    .barra-progreso { animation: none !important; width: 0 !important; }
+}
+
+/* --- SECCIÓN: CATÁLOGO --- */
+.seccion-catalogo {
+    background-color: #fbf5f0;
+    padding: 100px 10%;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.catalogo-visual img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.catalogo-contenido {
+    max-width: 500px;
+}
+
+.catalogo-tag {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #777;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.catalogo-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.catalogo-titulo span {
+    font-style: italic;
+    color: #d45d34;
+}
+
+.btn-premium {
+    display: inline-block;
+    padding: 14px 35px;
+    background-color: #d45d34;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn-premium:hover {
+    background-color: #b34a25;
+}
+
+/* --- SECCIÓN: ÚLTIMOS PERFUMES --- */
+.seccion-videos {
+    padding: 100px 10%;
+}
+
+.seccion-titulo-centrado {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #d45d34;
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: 400;
+}
+
+.grid-videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.contenedor-miniatura {
+    position: relative;
+    padding-top: 56.25%;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.contenedor-miniatura img {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.tarjeta-video:hover .contenedor-miniatura img {
+    transform: scale(1.05);
+}
+
+.etiqueta-perfume {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #d45d34;
+    color: #ffffff;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.video-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: #111111;
+    margin-top: 18px;
+    font-weight: 400;
+}
+
+.perfume-descripcion {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 8px;
+}
+
+/* --- SECCIÓN: VALORES --- */
+.seccion-valores {
+    background-color: #fbf5f0;
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.valores-lema {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+
+.grid-valores {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.item-valor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.valor-icono {
+    width: 90px; height: 90px;
+    border: 1px solid rgba(212, 93, 52, 0.3);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 15px; background: white; color: #d45d34; font-size: 1.8rem;
+}
+
+.valor-texto {
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #444;
+}
+
+/* --- FOOTER --- */
+.footer-principal {
+    padding: 80px 0 0;
+}
+
+.footer-columnas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+    padding: 0 10%;
+}
+
+.columna-footer h4 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+}
+
+.columna-footer ul { list-style: none; }
+.columna-footer li { margin-bottom: 10px; }
+.columna-footer a { text-decoration: none; color: #666; font-size: 0.85rem; }
+
+.barra-inferior {
+    background-color: #d45d34;
+    width: 100%;
+    padding: 25px 10%;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.enlaces-legales a { color: white; text-decoration: none; margin-left: 15px; }
+
+/* Responsivo */
+@media (max-width: 850px) {
+    .header-superior { padding: 15px 30px; }
+    .seccion-catalogo { flex-direction: column; text-align: center; }
+    .titulo-banner { font-size: 2.3rem; }
+    .barra-inferior { flex-direction: column; text-align: center; gap: 15px; }
+    .control-carrusel { width: 38px; height: 38px; font-size: 0.85rem; }
+    .control-anterior { left: 3%; }
+    .control-siguiente { right: 3%; }
+}

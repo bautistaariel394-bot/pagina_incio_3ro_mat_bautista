@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfumería Premium</title>
-    <link rel="preload" as="image" href="video1.gif">
-    <link rel="preload" as="image" href="video2.gif">
-    <link rel="preload" as="image" href="video3.gif">
+    <link rel="preload" as="image" href="img/video1.gif">
+    <link rel="preload" as="image" href="img/video2.gif">
+    <link rel="preload" as="image" href="img/video3.gif">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -17,7 +17,7 @@
 
     <header class="header-superior" id="navbar">
         <div class="logo">
-            <img src="logo.png" alt="Logo GB Exclusive Fragrances" draggable="false">
+            <img src="img/logo.png" alt="Logo GB Exclusive Fragrances" draggable="false">
         </div>
         <nav class="menu-navegacion">
             <ul>
@@ -33,7 +33,7 @@
 
             <div class="slide activo" aria-hidden="false">
                 <div class="video-background">
-                    <img src="video1.gif" alt="" class="gif-fondo" draggable="false">
+                    <img src="img/video1.gif" alt="" class="gif-fondo" draggable="false">
                 </div>
                 <div class="capa-oscura"></div>
                 <div class="contenido-slide">
@@ -45,7 +45,7 @@
 
             <div class="slide" aria-hidden="true">
                 <div class="video-background">
-                    <img src="video2.gif" alt="" class="gif-fondo" draggable="false">
+                    <img src="img/video2.gif" alt="" class="gif-fondo" draggable="false">
                 </div>
                 <div class="capa-oscura"></div>
                 <div class="contenido-slide">
@@ -57,7 +57,7 @@
 
             <div class="slide" aria-hidden="true">
                 <div class="video-background">
-                    <img src="video3.gif" alt="" class="gif-fondo" draggable="false">
+                    <img src="img/video3.gif" alt="" class="gif-fondo" draggable="false">
                 </div>
                 <div class="capa-oscura"></div>
                 <div class="contenido-slide">
@@ -85,13 +85,13 @@
 
     <section class="seccion-catalogo" id="logros">
         <div class="catalogo-visual">
-            <img src="catalogo.jpg" alt="Maqueta Catálogo Digital de Perfumes">
+            <video src="img/catalogo.mp4" autoplay muted loop playsinline aria-label="Maqueta Catálogo Digital de Perfumes"></video>
         </div>
         <div class="catalogo-contenido">
             <span class="catalogo-tag">Inspiración de temporada</span>
             <h2 class="catalogo-titulo">MIRA NUESTRO<br><span>Catálogo Digital</span></h2>
             <p class="catalogo-descripcion">Explora nuestra colección curada de perfumes de autor: fragancias frescas, orientales y florales, junto a los últimos lanzamientos en alta perfumería internacional.</p>
-            <a href="#" class="btn-premium">Ver Catálogo</a>
+            <button type="button" class="btn-premium" id="btnVerCatalogo">Ver Catálogo</button>
         </div>
     </section>
 
@@ -99,30 +99,51 @@
         <h2 class="seccion-titulo-centrado">Últimos Perfumes</h2>
         <div class="grid-videos">
 
-            <div class="tarjeta-video">
+            <div class="tarjeta-video" tabindex="0" role="button" aria-haspopup="dialog"
+                 data-video="img/perfume1.mp4"
+                 data-marca="Giorgio Armani"
+                 data-titulo="Aqua di Giorgio"
+                 data-etiqueta="Nuevo"
+                 data-precio="$89.99"
+                 data-descripcion="Notas amaderadas y especiadas para una presencia intensa y seductora. Una fragancia acuática con acordes marinos que evoluciona hacia una base cálida de cedro y ámbar, pensada para quien deja huella sin esfuerzo.">
                 <div class="contenedor-miniatura">
-                    <img src="perfume1.jpg" alt="Essence Noir">
+                    <video src="img/perfume1.mp4" autoplay muted loop playsinline aria-label="Aqua di Giorgio"></video>
                     <div class="etiqueta-perfume">Nuevo</div>
                 </div>
-                <h3 class="video-titulo">Essence Noir</h3>
+                <span class="perfume-marca">Giorgio Armani</span>
+                <h3 class="video-titulo">Aqua di Giorgio</h3>
                 <p class="perfume-descripcion">Notas amaderadas y especiadas para una presencia intensa y seductora.</p>
             </div>
 
-            <div class="tarjeta-video">
+            <div class="tarjeta-video" tabindex="0" role="button" aria-haspopup="dialog"
+                 data-video="img/perfume2.mp4"
+                 data-marca="Chanel"
+                 data-titulo="N°5 Limited Edition"
+                 data-etiqueta="Best Seller"
+                 data-precio="$145.00"
+                 data-descripcion="Un bouquet floral elegante con toques de jazmín y vainilla suave. La edición limitada del icónico N°5 reinterpreta el clásico con un frasco numerado y una estela más envolvente, ideal para ocasiones especiales.">
                 <div class="contenedor-miniatura">
-                    <img src="perfume2.jpg" alt="Fleur Divine">
+                    <video src="img/perfume2.mp4" autoplay muted loop playsinline aria-label="Chanel N°5 Limited Edition"></video>
                     <div class="etiqueta-perfume">Best Seller</div>
                 </div>
-                <h3 class="video-titulo">Fleur Divine</h3>
+                <span class="perfume-marca">Chanel</span>
+                <h3 class="video-titulo">N°5 Limited Edition</h3>
                 <p class="perfume-descripcion">Un bouquet floral elegante con toques de jazmín y vainilla suave.</p>
             </div>
 
-            <div class="tarjeta-video">
+            <div class="tarjeta-video" tabindex="0" role="button" aria-haspopup="dialog"
+                 data-video="img/perfume3.mp4"
+                 data-marca="Versace"
+                 data-titulo="Eros"
+                 data-etiqueta="Edición Limitada"
+                 data-precio="$79.50"
+                 data-descripcion="Una fragancia acuática y cítrica, ideal para el día a día. Eros combina menta, manzana verde y limón italiano sobre una base de vainilla, haba tonka y ámbar para un carácter fresco y a la vez seductor.">
                 <div class="contenedor-miniatura">
-                    <img src="perfume3.jpg" alt="Aqua Fresh">
+                    <video src="img/perfume3.mp4" autoplay muted loop playsinline aria-label="Versace Eros"></video>
                     <div class="etiqueta-perfume">Edición Limitada</div>
                 </div>
-                <h3 class="video-titulo">Aqua Fresh</h3>
+                <span class="perfume-marca">Versace</span>
+                <h3 class="video-titulo">Eros</h3>
                 <p class="perfume-descripcion">Una fragancia acuática y cítrica, ideal para el día a día.</p>
             </div>
 
@@ -178,6 +199,35 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal: Catálogo (imagen JPG) -->
+    <div class="modal-overlay" id="modalCatalogo" aria-hidden="true">
+        <div class="modal-caja modal-catalogo" role="dialog" aria-modal="true" aria-label="Catálogo Digital">
+            <button type="button" class="modal-cerrar" aria-label="Cerrar catálogo">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img src="img/catalogo.jpg" alt="Catálogo Digital de Perfumes" class="modal-catalogo-img">
+        </div>
+    </div>
+
+    <!-- Modal: Ficha de perfume -->
+    <div class="modal-overlay" id="modalPerfume" aria-hidden="true">
+        <div class="modal-caja modal-perfume" role="dialog" aria-modal="true" aria-labelledby="modalPerfumeTitulo">
+            <button type="button" class="modal-cerrar" aria-label="Cerrar ficha del perfume">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-perfume-video">
+                <video id="modalPerfumeVideo" autoplay muted loop playsinline></video>
+            </div>
+            <div class="modal-perfume-info">
+                <span class="modal-perfume-etiqueta" id="modalPerfumeEtiqueta"></span>
+                <span class="modal-perfume-marca" id="modalPerfumeMarca"></span>
+                <h3 id="modalPerfumeTitulo"></h3>
+                <p id="modalPerfumeDescripcion"></p>
+                <span class="modal-perfume-precio" id="modalPerfumePrecio"></span>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

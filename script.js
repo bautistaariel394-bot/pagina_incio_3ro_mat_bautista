@@ -109,6 +109,84 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // --- MODALES: Catálogo (JPG) y Ficha de Perfume ---
+    const modalCatalogo = document.getElementById('modalCatalogo');
+    const btnVerCatalogo = document.getElementById('btnVerCatalogo');
+
+    const modalPerfume = document.getElementById('modalPerfume');
+    const modalPerfumeVideo = document.getElementById('modalPerfumeVideo');
+    const modalPerfumeEtiqueta = document.getElementById('modalPerfumeEtiqueta');
+    const modalPerfumeMarca = document.getElementById('modalPerfumeMarca');
+    const modalPerfumeTitulo = document.getElementById('modalPerfumeTitulo');
+    const modalPerfumeDescripcion = document.getElementById('modalPerfumeDescripcion');
+    const modalPerfumePrecio = document.getElementById('modalPerfumePrecio');
+    const tarjetasPerfume = document.querySelectorAll('.tarjeta-video');
+
+    function abrirModal(modal) {
+        modal.classList.add('abierto');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function cerrarModal(modal) {
+        modal.classList.remove('abierto');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+
+        // Si es la ficha de perfume, detenemos y liberamos el video para que
+        // no siga sonando/renderizando de fondo tras cerrar.
+        if (modal === modalPerfume) {
+            modalPerfumeVideo.pause();
+            modalPerfumeVideo.removeAttribute('src');
+            modalPerfumeVideo.load();
+        }
+    }
+
+    // Abrir catálogo en JPG
+    if (btnVerCatalogo && modalCatalogo) {
+        btnVerCatalogo.addEventListener('click', () => abrirModal(modalCatalogo));
+    }
+
+    // Abrir ficha de cada perfume con su video, descripción y precio
+    tarjetasPerfume.forEach(tarjeta => {
+        function abrirFichaPerfume() {
+            const { video, marca, titulo, etiqueta, precio, descripcion } = tarjeta.dataset;
+
+            modalPerfumeVideo.setAttribute('src', video);
+            modalPerfumeEtiqueta.textContent = etiqueta || '';
+            modalPerfumeMarca.textContent = marca || '';
+            modalPerfumeTitulo.textContent = titulo || '';
+            modalPerfumeDescripcion.textContent = descripcion || '';
+            modalPerfumePrecio.textContent = precio || '';
+
+            abrirModal(modalPerfume);
+            modalPerfumeVideo.play();
+        }
+
+        tarjeta.addEventListener('click', abrirFichaPerfume);
+        tarjeta.addEventListener('keydown', (evento) => {
+            if (evento.key === 'Enter' || evento.key === ' ') {
+                evento.preventDefault();
+                abrirFichaPerfume();
+            }
+        });
+    });
+
+    // Cerrar modales: botón "x", clic fuera de la caja, o tecla Escape
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.querySelector('.modal-cerrar').addEventListener('click', () => cerrarModal(overlay));
+        overlay.addEventListener('click', (evento) => {
+            if (evento.target === overlay) cerrarModal(overlay);
+        });
+    });
+
+    document.addEventListener('keydown', (evento) => {
+        if (evento.key === 'Escape') {
+            document.querySelectorAll('.modal-overlay.abierto').forEach(cerrarModal);
+        }
+    });
+
+
     // --- NAVBAR SCROLL ---
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
